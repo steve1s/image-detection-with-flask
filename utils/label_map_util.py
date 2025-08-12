@@ -14,9 +14,13 @@ def load_labelmap(path):
         if 'id:' in line:
             item['id'] = int(re.findall(r'id: (\d+)', line)[0])
         if 'name:' in line:
-            item['name'] = re.findall(r"name: '(.+)'", line)[0]
+            match = re.search(r'name:\s*[\'\"](.+)[\'\"]', line)
+            if match:
+                item['name'] = match.group(1)
         if 'display_name:' in line:
-            item['display_name'] = re.findall(r"display_name: '(.+)'", line)[0]
+            match = re.search(r'display_name:\s*[\'\"](.+)[\'\"]', line)
+            if match:
+                item['display_name'] = match.group(1)
         if '}' in line and item:
             categories.append(item)
             item = {}
