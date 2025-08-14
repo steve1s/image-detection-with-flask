@@ -3,6 +3,9 @@ from werkzeug.utils import secure_filename
 import numpy as np
 import os
 import sys
+import os
+# runs oncpu
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 import tensorflow as tf
 from PIL import Image
 import time
@@ -63,7 +66,7 @@ def inference(image_np):
     # detection_classes should be ints.
     detections['detection_classes'] = detections['detection_classes'].astype(np.int64)
     image_np_with_detections = image_np.copy()
-    viz_util.visualize_boxes_and_labels_on_image_array(
+    vis_util.visualize_boxes_and_labels_on_image_array(
           image_np_with_detections,
           detections['detection_boxes'],
           detections['detection_classes'],
@@ -71,8 +74,7 @@ def inference(image_np):
           category_index,
           use_normalized_coordinates=True,
           max_boxes_to_draw=200,
-          min_score_thresh=.30,
-          agnostic_model=False)
+          min_score_thresh=.30)
     return (image_np_with_detections)
 
 # adding function to display index page

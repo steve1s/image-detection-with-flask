@@ -176,10 +176,11 @@ def draw_bounding_box_on_image(image,
   except IOError:
     font = ImageFont.load_default()
 
-  # If the total height of the display strings added to the top of the bounding
+  # Remove erroneous use of display_str before assignment
   # box exceeds the top of the image, stack the strings below the bounding box
   # instead of above.
-  display_str_heights = [font.getsize(ds)[1] for ds in display_str_list]
+  # display_str_heights = [font.getsize(ds)[1] for ds in display_str_list]
+  display_str_heights = [font.getbbox(ds)[3] - font.getbbox(ds)[1] for ds in display_str_list]
   # Each display_str has a top and bottom margin of 0.05x.
   total_display_str_height = (1 + 2 * 0.05) * sum(display_str_heights)
 
@@ -189,17 +190,21 @@ def draw_bounding_box_on_image(image,
     text_bottom = bottom + total_display_str_height
   # Reverse list and print from bottom to top.
   for display_str in display_str_list[::-1]:
-    text_width, text_height = font.getsize(display_str)
+    if not display_str:
+      continue
+    display_str = str(display_str)
+    bbox = font.getbbox(display_str)
+    text_width, text_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
     margin = np.ceil(0.05 * text_height)
     draw.rectangle(
-        [(left, text_bottom - text_height - 2 * margin), (left + text_width,
-                                                          text_bottom)],
-        fill=color)
+      [(left, text_bottom - text_height - 2 * margin), (left + text_width,
+                              text_bottom)],
+      fill=color)
     draw.text(
-        (left + margin, text_bottom - text_height - margin),
-        display_str,
-        fill='black',
-        font=font)
+      (left + margin, text_bottom - text_height - margin),
+      display_str,
+      fill='black',
+      font=font)
     text_bottom -= text_height - 2 * margin
 
 
