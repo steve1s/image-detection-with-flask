@@ -48,3 +48,17 @@ Check out a live demo
 ├── /static # Static files (CSS, JavaScript)
 ├── /uploads # Uploaded images storage
 └── /utils # Helper modules (e.g., image preprocessing, model loading)
+
+---
+
+## Requirements
+
+- Python 3.7 or higher
+- Tensorflow (
+- OpenCV (installed as `opencv-python`)
+- Flask
+- Optional: Streamlit (if using the Streamlit-based interface)
+
+---
+
+## Installation
