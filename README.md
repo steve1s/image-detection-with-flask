@@ -62,3 +62,46 @@ Check out a live demo
 ---
 
 ## Installation
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/steve1s/image-detection-with-flask.git
+   cd image-detection-with-flask
+   ```
+
+2. Create and activate a virtual environment:
+  ```bash
+  python3 -m venv venv
+  source venv/bin/activate    # on Uinx/MacOS
+  #or
+  venv\Scripts\activate      #on Windows
+```
+3. Install Dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Usage
+Local Python Server
+
+Start the Flask app:
+``` bash
+python app.py
+```
+By default, the app runs on http://127.0.0.1:5000 . Visit that in your browser to upload images and view detections.
+Optionally, try the streamlit interface:
+```bash
+python app_streamlit.py
+```
+
+---
+## Docker
+
+Build and run via Docker:
+```bash
+docker build -t flask-tf-app .
+docker run -p 5000:5000 flask-tf-app
+```
+Then navigate to http://localhost:5000 .
