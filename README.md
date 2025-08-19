@@ -34,7 +34,7 @@ Check out a live demo
 - (Optional) Stream-based interface using Streamlit (`app_streamlit.py`)
 
 ## Project Structure
-
+```
 ├── app.py # Main Flask application
 ├── app_streamlit.py # Alternative interface using Streamlit
 ├── requirements.txt # Python dependencies
@@ -48,7 +48,7 @@ Check out a live demo
 ├── /static # Static files (CSS, JavaScript)
 ├── /uploads # Uploaded images storage
 └── /utils # Helper modules (e.g., image preprocessing, model loading)
-
+```
 ---
 
 ## Requirements
