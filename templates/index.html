@@ -49,6 +49,10 @@
                 </div>
                 <div class="col-lg-8">
                     <img id="imagen"><br/>
+                    {% if result_image %}
+                        <h3>Detection Result:</h3>
+                        <img src="{{ url_for('uploaded_file', filename=result_image) }}" width="500" height="500">
+                    {% endif %}
                 </div>
             </div>
         </form>
