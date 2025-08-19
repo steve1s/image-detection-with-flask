@@ -70,12 +70,12 @@ Check out a live demo
    ```
 
 2. Create and activate a virtual environment:
-  ```bash
-  python3 -m venv venv
-  source venv/bin/activate    # on Uinx/MacOS
-  #or
-  venv\Scripts\activate      #on Windows
-  ```
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate    # on Uinx/MacOS
+     #or
+     venv\Scripts\activate      #on Windows
+     ```
 3. Install Dependencies:
    ```bash
    pip install -r requirements.txt
