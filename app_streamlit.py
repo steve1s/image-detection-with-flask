@@ -11,7 +11,7 @@ detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)
 # Helper for detection
 @st.cache_resource
 def get_category_index():
-    from utils import label_map_util
+    from myutils import label_map_util
     PATH_TO_LABELS = "./data/mscoco_label_map.pbtxt"
     NUM_CLASSES = 90
     label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
@@ -19,7 +19,7 @@ def get_category_index():
     return label_map_util.create_category_index(categories)
 category_index = get_category_index()
 
-from utils import visualization_utils as vis_util
+from myutils import visualization_utils as vis_util
 
 def run_inference(image_np):
     input_tensor = tf.convert_to_tensor(image_np)
