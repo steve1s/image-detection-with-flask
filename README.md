@@ -93,7 +93,7 @@ Start the Flask app:
 By default, the app runs on http://127.0.0.1:5000 . Visit that in your browser to upload images and view detections.
 Optionally, try the streamlit interface:
    ```bash
-   python app_streamlit.py
+   streamlit run app_streamlit.py
    ```
 
 ---
